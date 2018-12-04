@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "155504597010",
+    "firebase_url": "https://deverajoseangelolab9.firebaseio.com",
+    "project_id": "deverajoseangelolab9",
+    "storage_bucket": "deverajoseangelolab9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155504597010:android:1378793cab98ea67",
+        "android_client_info": {
+          "package_name": "devera.angelo.jose.deverajoseangelolab9"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155504597010-sksou1gc3hif56e9ju7e9mqdtia6iodr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "devera.angelo.jose.deverajoseangelolab9",
+            "certificate_hash": "23f52d81c3183bd8ed5d382570fe15d155104c3a"
+          }
+        },
+        {
+          "client_id": "155504597010-hjvf67brd5hodutdrigupk152pl61cac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF-iFbG0f4ZsX4HrgcN11ypHpq1MuCHwY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155504597010-hjvf67brd5hodutdrigupk152pl61cac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
