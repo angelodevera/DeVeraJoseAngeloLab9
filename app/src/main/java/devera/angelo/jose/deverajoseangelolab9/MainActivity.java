@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 for(DataSnapshot ss : dataSnapshot.getChildren()){
                     keyList.add(ss.getKey());
                 }
-                Toast.makeText(MainActivity.this,dataSnapshot.child( keyList.get(0)).child("fullName").getValue().toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this,dataSnapshot.child( keyList.get(0)).child("fullName").getValue().toString(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -59,13 +59,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addRecord (View v){
-        String fname = etFname.getText().toString().trim();
-        String gender = etgender.getText().toString().trim();
-        Integer age = Integer.parseInt(etage.getText().toString().trim());
-        String key = points.push().getKey();
-        Person person = new Person(fname, gender, age);
-        points.child(key).setValue(person);
-        keyList.add(key);
+
+
+
+        points.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String fname = etFname.getText().toString().trim();
+                Boolean flag = false;
+                for (String ss : keyList) {
+//                    Person user = dataSnapshot.child(ss).child().getValue(Person.class);
+                    String ffname = dataSnapshot.child(ss).child("fullName").getValue().toString();
+
+
+                    if(ffname.equals(etFname.getText().toString().trim())){
+                        flag =true;
+//                        tvFname.setText(dataSnapshot.child(ss).child("fullName").getValue().toString());
+//                        tvgender.setText(dataSnapshot.child(ss).child("gender").getValue().toString());
+//                        tvage.setText(dataSnapshot.child(ss).child("age").getValue().toString());
+                    }
+                }
+                if(!flag){
+
+                    String gender = etgender.getText().toString().trim();
+                    Integer age = Integer.parseInt(etage.getText().toString().trim());
+                    String key = points.push().getKey();
+                    Person person = new Person(fname, gender, age);
+                    points.child(key).setValue(person);
+                    keyList.add(key);
+                    Toast.makeText(MainActivity.this, "Successfully added to db", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Fullname already on DB", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 //        Toast.makeText(this, "Record Inserted...", Toast.LENGTH_LONG).show();
 
     }
@@ -80,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 //                    Person user = dataSnapshot.child(ss).child().getValue(Person.class);
                         String fname = dataSnapshot.child(ss).child("fullName").getValue().toString();
 
-                    Toast.makeText(MainActivity.this, fname, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this, fname, Toast.LENGTH_LONG).show();
                     if(fname.equals(etFname.getText().toString().trim())){
                         tvFname.setText(dataSnapshot.child(ss).child("fullName").getValue().toString());
                         tvgender.setText(dataSnapshot.child(ss).child("gender").getValue().toString());
